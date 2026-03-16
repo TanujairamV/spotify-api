@@ -1,28 +1,17 @@
-let nowPlaying = {
-  isPlaying: false,
-  title: "",
-  artist: "",
-  album: "",
-  albumImageUrl: "",
-  songUrl: "",
-  previewUrl: "",
-  duration: 0,
-  progress: 0
-};
-
 export default function handler(req, res) {
 
-  if (req.method === "POST") {
-    nowPlaying = req.body;
+  const data = {
+    isPlaying: false,
+    title: "",
+    artist: "",
+    album: "",
+    albumImageUrl: "",
+    songUrl: "",
+    previewUrl: "",
+    duration: 0,
+    progress: 0
+  };
 
-    return res.status(200).json({
-      status: "updated"
-    });
-  }
+  res.status(200).json(data);
 
-  if (req.method === "GET") {
-    return res.status(200).json(nowPlaying);
-  }
-
-  res.status(405).json({ error: "Method not allowed" });
 }
