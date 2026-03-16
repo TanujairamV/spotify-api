@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spotify Now Playing API</title>
+
+<style>
+body{
+font-family: Arial;
+background:#121212;
+color:white;
+text-align:center;
+padding:50px;
+}
+
+.box{
+background:#1e1e1e;
+padding:30px;
+border-radius:10px;
+display:inline-block;
+max-width:600px;
+}
+
+button{
+background:#1db954;
+border:none;
+padding:10px 20px;
+font-size:16px;
+border-radius:5px;
+cursor:pointer;
+color:white;
+}
+
+pre{
+text-align:left;
+background:#000;
+padding:15px;
+border-radius:6px;
+overflow:auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Spotify Now Playing API</h1>
+
+<p>Your API endpoint is ready!</p>
+
+<h3>Endpoint</h3>
+
+<pre>GET /api/now-playing</pre>
+
+<h3>Test it</h3>
+
+<button onclick="testAPI()">Click here to test your API →</button>
+
+<pre id="result">Waiting for response...</pre>
+
+<h3>Example Response</h3>
+
+<pre>
+{
+  "isPlaying": true,
+  "title": "Song Title",
+  "artist": "Artist Name",
+  "album": "Album Name",
+  "albumImageUrl": "https://...",
+  "songUrl": "https://open.spotify.com/track/...",
+  "previewUrl": "https://...",
+  "duration": 240000,
+  "progress": 120000
+}
+</pre>
+
+</div>
+
+<script>
+
+async function testAPI(){
+
+const res = await fetch("/api/now-playing");
+
+const data = await res.json();
+
+document.getElementById("result").textContent =
+JSON.stringify(data,null,2);
+
+}
+
+</script>
+
+</body>
+</html>
